@@ -109,7 +109,7 @@ public class NettyCilentRemote extends AbstractClientRemote {
 	}
 
 	@Override
-	protected void stop1() {
+	protected void handlerStop() {
 		if (null != workerGroup) {
 			workerGroup.shutdownGracefully();
 		}

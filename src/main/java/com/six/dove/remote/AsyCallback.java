@@ -18,5 +18,5 @@ public interface AsyCallback {
 	 * @param result
 	 *            rpc调用返回结果
 	 */
-	public void execute(RemoteResponse response);
+	 void execute(RemoteResponse response);
 }

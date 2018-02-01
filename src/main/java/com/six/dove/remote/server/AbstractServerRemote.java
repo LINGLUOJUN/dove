@@ -197,7 +197,7 @@ public abstract class AbstractServerRemote extends
 	}
 	
 	@Override
-	protected final void stop1() {
+	protected final void handlerStop() {
 		registerMap.clear();
 	}
 
