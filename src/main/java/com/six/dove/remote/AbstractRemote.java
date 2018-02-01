@@ -71,6 +71,12 @@ public abstract class AbstractRemote<R_S, R_R, C_S extends RemoteMsg, C_R, C ext
         return connectionPool.remove(id);
     }
 
+
+    /**
+     * 执行过期关闭
+     *
+     * @param expireTime
+     */
     private void closeExpire(long expireTime) {
         Iterator<Map.Entry<String, C>> mapIterator = connectionPool.entrySet().iterator();
         long now = System.currentTimeMillis();
@@ -84,6 +90,11 @@ public abstract class AbstractRemote<R_S, R_R, C_S extends RemoteMsg, C_R, C ext
         }
     }
 
+    /**
+     * 关闭远程连接
+     *
+     * @param connection
+     */
     public static void close(RemoteConnection<?, ?> connection) {
         if (null != connection) {
             try {
@@ -96,7 +107,10 @@ public abstract class AbstractRemote<R_S, R_R, C_S extends RemoteMsg, C_R, C ext
 
     @Override
     protected final void doStop() {
+        //关闭远程连接
         closeExpire(0);
+
+        //执行其他的关闭动作
         handlerStop();
     }
 
