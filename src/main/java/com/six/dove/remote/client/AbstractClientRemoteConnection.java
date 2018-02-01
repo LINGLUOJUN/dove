@@ -16,30 +16,30 @@ import com.six.dove.remote.protocol.RemoteRequest;
  */
 
 public abstract class AbstractClientRemoteConnection extends AbstractRemoteConnection<RemoteRequest, RemoteFuture>
-		implements ClientRemoteConnection {
+        implements ClientRemoteConnection {
 
-	final static Logger log = LoggerFactory.getLogger(AbstractClientRemoteConnection.class);
+    final static Logger log = LoggerFactory.getLogger(AbstractClientRemoteConnection.class);
 
-	private AbstractClientRemote clientRemote;
-	private Map<String, RemoteFuture> requestMap;
+    private AbstractClientRemote clientRemote;
+    private Map<String, RemoteFuture> requestMap;
 
-	protected AbstractClientRemoteConnection(AbstractClientRemote clientRemote, String host, int port) {
-		super(host, port);
-		this.clientRemote = clientRemote;
-		this.requestMap = new ConcurrentHashMap<>();
-	}
+    protected AbstractClientRemoteConnection(AbstractClientRemote clientRemote, String host, int port) {
+        super(host, port);
+        this.clientRemote = clientRemote;
+        this.requestMap = new ConcurrentHashMap<>();
+    }
 
-	@Override
-	public void putRemoteFuture(String rpcRequestId, RemoteFuture wrapperFuture) {
-		requestMap.put(rpcRequestId, wrapperFuture);
-	}
+    @Override
+    public void putRemoteFuture(String rpcRequestId, RemoteFuture wrapperFuture) {
+        requestMap.put(rpcRequestId, wrapperFuture);
+    }
 
-	@Override
-	public RemoteFuture removeRemoteFuture(String rpcRequestId) {
-		return requestMap.remove(rpcRequestId);
-	}
+    @Override
+    public RemoteFuture removeRemoteFuture(String rpcRequestId) {
+        return requestMap.remove(rpcRequestId);
+    }
 
-	protected AbstractClientRemote getClientRemote() {
-		return clientRemote;
-	}
+    protected AbstractClientRemote getClientRemote() {
+        return clientRemote;
+    }
 }

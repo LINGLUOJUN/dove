@@ -13,91 +13,92 @@ import com.six.dove.remote.server.ServerRemoteConnection;
  */
 public class RemoteRequest extends RemoteMsg implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1071881684426113946L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1071881684426113946L;
 
-	// 呼叫host
-	private String callHost;
-	// 呼叫host端口
-	private int callPort;
-	// 呼叫命令
-	private ServiceName serviceName;
-	// 呼叫参数
-	private Object[] params;
+    // 呼叫host
+    private String callHost;
+    // 呼叫host端口
+    private int callPort;
+    // 呼叫命令
+    private ServiceName serviceName;
+    // 呼叫参数
+    private Object[] params;
 
-	private Map<String, Object> paramsMap;
+    private Map<String, Object> paramsMap;
 
-	private transient AsyCallback asyCallback;
+    //函数式亦可作为参数
+    private transient AsyCallback asyCallback;
 
-	private transient ServerRemoteConnection serverRpcConnection;
+    private transient ServerRemoteConnection serverRpcConnection;
 
-	public RemoteRequest() {
-		super(RemoteProtocol.REQUEST);
-	}
+    public RemoteRequest() {
+        super(RemoteProtocol.REQUEST);
+    }
 
-	public String getCallHost() {
-		return callHost;
-	}
+    public String getCallHost() {
+        return callHost;
+    }
 
-	public void setCallHost(String callHost) {
-		this.callHost = callHost;
-	}
+    public void setCallHost(String callHost) {
+        this.callHost = callHost;
+    }
 
-	public int getCallPort() {
-		return callPort;
-	}
+    public int getCallPort() {
+        return callPort;
+    }
 
-	public void setCallPort(int callPort) {
-		this.callPort = callPort;
-	}
+    public void setCallPort(int callPort) {
+        this.callPort = callPort;
+    }
 
-	public ServiceName getServiceName() {
-		return serviceName;
-	}
+    public ServiceName getServiceName() {
+        return serviceName;
+    }
 
-	public void setServiceName(ServiceName serviceName) {
-		this.serviceName = serviceName;
-	}
+    public void setServiceName(ServiceName serviceName) {
+        this.serviceName = serviceName;
+    }
 
-	public Object[] getParams() {
-		return params;
-	}
+    public Object[] getParams() {
+        return params;
+    }
 
-	public void setParams(Object[] params) {
-		this.params = params;
-	}
+    public void setParams(Object[] params) {
+        this.params = params;
+    }
 
-	public Map<String, Object> getParamsMap() {
-		return paramsMap;
-	}
+    public Map<String, Object> getParamsMap() {
+        return paramsMap;
+    }
 
-	public void setParamsMap(Map<String, Object> paramsMap) {
-		this.paramsMap = paramsMap;
-	}
+    public void setParamsMap(Map<String, Object> paramsMap) {
+        this.paramsMap = paramsMap;
+    }
 
-	public AsyCallback getAsyCallback() {
-		return asyCallback;
-	}
+    public AsyCallback getAsyCallback() {
+        return asyCallback;
+    }
 
-	public void setAsyCallback(AsyCallback asyCallback) {
-		this.asyCallback = asyCallback;
-	}
-	
-	public boolean isAsy() {
-		return null!=asyCallback;
-	}
+    public void setAsyCallback(AsyCallback asyCallback) {
+        this.asyCallback = asyCallback;
+    }
 
-	public ServerRemoteConnection getServerRpcConnection() {
-		return serverRpcConnection;
-	}
+    public boolean isAsy() {
+        return null != asyCallback;
+    }
 
-	public void setServerRpcConnection(ServerRemoteConnection serverRpcConnection) {
-		this.serverRpcConnection = serverRpcConnection;
-	}
+    public ServerRemoteConnection getServerRpcConnection() {
+        return serverRpcConnection;
+    }
 
-	public String toString() {
-		return "@" + callHost + ":" + callPort + "/" + serviceName.toString() + "/" + getId();
-	}
+    public void setServerRpcConnection(ServerRemoteConnection serverRpcConnection) {
+        this.serverRpcConnection = serverRpcConnection;
+    }
+
+    public String toString() {
+        return "@" + callHost + ":" + callPort + "/" + serviceName.toString() + "/" + getId();
+    }
 }

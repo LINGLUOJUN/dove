@@ -16,45 +16,46 @@ import com.six.dove.remote.client.ClientRemote;
  */
 public class DoveClientImpl extends AbstractService implements DoveClient {
 
-	private ClientRemote clientRemote;
+    private ClientRemote clientRemote;
 
-	public DoveClientImpl() {
-		this(new NettyCilentRemote());
-	}
+    public DoveClientImpl() {
+        this(new NettyCilentRemote());
+    }
 
-	public DoveClientImpl(ClientRemote clientRemote) {
-		super("dove-client");
-		Objects.requireNonNull(clientRemote);
-		this.clientRemote = clientRemote;
-	}
+    public DoveClientImpl(ClientRemote clientRemote) {
+        super("dove-client");
+        Objects.requireNonNull(clientRemote);
+        this.clientRemote = clientRemote;
+    }
 
-	@Override
-	public <T> T lookupService(Class<?> clz) {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public <T> T lookupService(Class<?> clz) {
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
-	public <T> T lookupService(Class<?> clz, AsyCallback callback) {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public <T> T lookupService(Class<?> clz, AsyCallback callback) {
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
-	public <T> T lookupService(String targetHost, int targetPort, Class<?> clz, final AsyCallback asyCallback) {
-		return clientRemote.getOrNewRemoteProtocolProxy(targetHost, targetPort, clz, asyCallback);
-	}
+    @Override
+    public <T> T lookupService(String targetHost, int targetPort, Class<?> clz, final AsyCallback asyCallback) {
+        return clientRemote.getOrNewRemoteProtocolProxy(targetHost, targetPort, clz, asyCallback);
+    }
 
-	public <T> T lookupService(String targetHost, int targetPort, Class<?> clz) {
-		return clientRemote.getOrNewRemoteProtocolProxy(targetHost, targetPort, clz);
-	}
+    @Override
+    public <T> T lookupService(String targetHost, int targetPort, Class<?> clz) {
+        return clientRemote.getOrNewRemoteProtocolProxy(targetHost, targetPort, clz);
+    }
 
-	@Override
-	protected final void doStart() {
-		clientRemote.start();
-	}
+    @Override
+    protected final void doStart() {
+        clientRemote.start();
+    }
 
-	@Override
-	protected void doStop() {
-		clientRemote.stop();
-	}
+    @Override
+    protected void doStop() {
+        clientRemote.stop();
+    }
 
 }

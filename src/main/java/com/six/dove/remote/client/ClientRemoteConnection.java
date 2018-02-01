@@ -4,6 +4,7 @@ import com.six.dove.remote.connection.RemoteConnection;
 import com.six.dove.remote.protocol.RemoteRequest;
 
 /**
+ * @author yangshuang
  * @author:MG01867
  * @date:2018年1月29日
  * @E-mail:359852326@qq.com
@@ -12,8 +13,21 @@ import com.six.dove.remote.protocol.RemoteRequest;
  */
 public interface ClientRemoteConnection extends RemoteConnection<RemoteRequest, RemoteFuture> {
 
-	void putRemoteFuture(String rpcRequestId, RemoteFuture remoteFuture);
 
-	RemoteFuture removeRemoteFuture(String rpcRequestId);
+    /**
+     * 添加远程回调
+     *
+     * @param rpcRequestId
+     * @param remoteFuture
+     */
+    void putRemoteFuture(String rpcRequestId, RemoteFuture remoteFuture);
+
+    /**
+     * 当客户端消费时移除远程回调
+     *
+     * @param rpcRequestId
+     * @return
+     */
+    RemoteFuture removeRemoteFuture(String rpcRequestId);
 
 }

@@ -6,12 +6,17 @@ import com.six.dove.remote.connection.RemoteConnection;
 import com.six.dove.remote.protocol.RemoteMsg;
 import com.six.dove.remote.protocol.RemoteSerialize;
 
+
 /**
- * @author 作者
- * @E-mail: 359852326@qq.com
+ * * 远程调用端
+ *
+ * @param <R_S> execute方法的参数R_S
+ * @param <R_R> execute方法返回R_R
+ * @param <C_S> 远程调用端连接发送方法的参数C_S
+ * @param <C_R> 远程调用端连接发送方法返回C_R
+ * @param <C>
+ * @author yangshuang
  * @date 创建时间：2017年4月10日 上午11:17:33 远程调用 接口
- * @describe 远程调用端
- * execute方法的参数R_S,execute方法返回R_R，远程调用端连接发送方法的参数C_S,远程调用端连接发送方法返回C_R
  */
 public interface Remote<R_S, R_R, C_S extends RemoteMsg, C_R, C extends RemoteConnection<C_S, C_R>> extends Service {
 
