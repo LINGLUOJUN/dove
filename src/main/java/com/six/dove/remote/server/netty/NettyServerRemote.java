@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.six.dove.remote.compiler.Compiler;
-import com.six.dove.remote.compiler.impl.JavaCompilerImpl;
+import com.six.dove.remote.compiler.support.JavaCompilerImpl;
 import com.six.dove.remote.protocol.RemoteSerialize;
 import com.six.dove.remote.server.AbstractServerRemote;
 import com.six.dove.rpc.protocol.netty.NettyRpcDecoder;

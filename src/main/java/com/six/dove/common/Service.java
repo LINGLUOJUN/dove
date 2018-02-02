@@ -1,5 +1,7 @@
 package com.six.dove.common;
 
+import com.six.dove.common.support.State;
+
 /**
  * @author sixliu
  * @date 2018年1月17日
@@ -8,15 +10,7 @@ package com.six.dove.common;
  */
 public interface Service {
 
-    /**
-     * 服务状态
-     *
-     * @author Administrator
-     */
-    enum State {
 
-        INIT, START, STOP, FAILED;
-    }
 
     /**
      * 获取服务名称

@@ -69,7 +69,7 @@ public abstract class AbstractInvocation implements Invocation {
     /**
      * 启用服务
      */
-    protected abstract void doStart();
+     abstract void doStart();
 
     @Override
     public final void stop() {
@@ -83,5 +83,5 @@ public abstract class AbstractInvocation implements Invocation {
     /**
      * 停止无法
      */
-    protected abstract void doStop();
+     abstract void doStop();
 }

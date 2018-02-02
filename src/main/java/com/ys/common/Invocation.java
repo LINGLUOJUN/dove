@@ -8,11 +8,6 @@ package com.ys.common;
  */
 public interface Invocation {
 
-    /**
-     * 服务状态
-     *
-     * @author Administrator
-     */
 
 
     /**

@@ -8,25 +8,15 @@ package com.six.dove.remote.compiler;
  */
 public interface Compiler {
 
-	/**
-	 * 代码构建器
-	 * @author MG01867
-	 *
-	 */
-	@FunctionalInterface
-	interface CodeBuilder {
-		String build();
-	}
 
-	/**
-	 * 获取
-	 * 
-	 * @param packageName
-	 * @param className
-	 * @param code
-	 * @param parameterTypes
-	 * @param initargs
-	 * @return
-	 */
-	Object findOrCompile(String fullClassName, Class<?>[] parameterTypes, Object[] initargs, CodeBuilder codeBuilder);
+    /**
+     * 获取
+     *
+     * @param parameterTypes
+     * @param initArgs
+     * @param codeBuilder    构造器
+     * @param fullClassName
+     * @return
+     */
+    Object findOrCompile(String fullClassName, Class<?>[] parameterTypes, Object[] initArgs, CodeBuilder codeBuilder);
 }

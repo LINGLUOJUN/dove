@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import org.junit.Test;
 
 import com.six.dove.remote.compiler.Compiler;
-import com.six.dove.remote.compiler.impl.JavaCompilerImpl;
+import com.six.dove.remote.compiler.support.JavaCompilerImpl;
 import com.six.dove.remote.server.AbstractServerRemote;
 import com.six.dove.remote.server.WrapperService;
 

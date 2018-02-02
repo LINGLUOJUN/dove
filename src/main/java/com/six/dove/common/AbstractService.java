@@ -3,6 +3,7 @@ package com.six.dove.common;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
+import com.six.dove.common.support.State;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

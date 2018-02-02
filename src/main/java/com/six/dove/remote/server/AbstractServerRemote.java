@@ -13,7 +13,7 @@ import com.six.dove.remote.AbstractRemote;
 import com.six.dove.remote.ServiceName;
 import com.six.dove.remote.ServicePath;
 import com.six.dove.remote.compiler.Compiler;
-import com.six.dove.remote.compiler.impl.JavaCompilerImpl;
+import com.six.dove.remote.compiler.support.JavaCompilerImpl;
 import com.six.dove.remote.protocol.RemoteRequest;
 import com.six.dove.remote.protocol.RemoteResponse;
 import com.six.dove.remote.protocol.RemoteResponseState;

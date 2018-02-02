@@ -167,19 +167,16 @@ public class NettyConnectionImpl extends AbstractClientRemoteConnection implemen
 		ChannelFuture channelFuture = nettyHandler.writeAndFlush(rpcRequest);
 		boolean result = channelFuture.awaitUninterruptibly(getClientRemote().getCallTimeout());
 		if (result) {
-			channelFuture.addListener(new GenericFutureListener<Future<? super Void>>() {
-				@Override
-				public void operationComplete(Future<? super Void> future) throws Exception {
-					if (future.isSuccess()) {
-						log.debug("send rpcRequest successed");
-					} else {
-						removeRemoteFuture(rpcRequest.getId());
-						remoteFuture.onComplete(RemoteResponseConstants.SEND_FAILED, System.currentTimeMillis());
-						close();
-						log.debug("send rpcRequest failed");
-					}
-				}
-			});
+			channelFuture.addListener(future -> {
+                if (future.isSuccess()) {
+                    log.debug("send rpcRequest successed");
+                } else {
+                    removeRemoteFuture(rpcRequest.getId());
+                    remoteFuture.onComplete(RemoteResponseConstants.SEND_FAILED, System.currentTimeMillis());
+                    close();
+                    log.debug("send rpcRequest failed");
+                }
+            });
 		}
 		return remoteFuture;
 	}
