@@ -7,11 +7,11 @@ import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.six.dove.remote.exception.RemoteSystenExceptions;
+import com.six.dove.remote.exception.RemoteSystemExceptions;
 import com.six.dove.remote.protocol.RemoteProtocol;
 import com.six.dove.remote.protocol.RemoteRequest;
 import com.six.dove.remote.protocol.RemoteResponse;
-import com.six.dove.remote.protocol.RemoteSerialize;
+import com.six.dove.remote.serialize.RemoteSerialize;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
@@ -94,7 +94,7 @@ public class NettyRpcDecoder extends LengthFieldBasedFrameDecoder implements Rem
 							log.error("did not unSerialize rpcResponse from " + getRemoteAddress(ctx), e);
 						}
 					} else {
-						throw RemoteSystenExceptions.ILLEGAL_MSG_ERR;
+						throw RemoteSystemExceptions.ILLEGAL_MSG_ERR;
 					}
 				}
 			}

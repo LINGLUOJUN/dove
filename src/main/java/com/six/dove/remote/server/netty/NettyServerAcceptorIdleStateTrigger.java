@@ -3,7 +3,7 @@ package com.six.dove.remote.server.netty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.six.dove.remote.exception.RemoteSystenExceptions;
+import com.six.dove.remote.exception.RemoteSystemExceptions;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -26,7 +26,7 @@ public class NettyServerAcceptorIdleStateTrigger extends ChannelInboundHandlerAd
 		if (evt instanceof IdleStateEvent) {
 			IdleState state = ((IdleStateEvent) evt).state();
 			if (state == IdleState.ALL_IDLE) {
-				throw RemoteSystenExceptions.READER_IDLE_ERR;
+				throw RemoteSystemExceptions.READER_IDLE_ERR;
 			}
 		} else {
 			super.userEventTriggered(ctx, evt);

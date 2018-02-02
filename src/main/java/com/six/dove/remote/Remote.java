@@ -4,7 +4,7 @@ import com.six.dove.common.Service;
 import com.six.dove.remote.compiler.Compiler;
 import com.six.dove.remote.connection.RemoteConnection;
 import com.six.dove.remote.protocol.RemoteMsg;
-import com.six.dove.remote.protocol.RemoteSerialize;
+import com.six.dove.remote.serialize.RemoteSerialize;
 
 
 /**

@@ -17,14 +17,14 @@ import com.six.dove.remote.compiler.Compiler;
 import com.six.dove.remote.connection.RemoteConnection;
 import com.six.dove.remote.exception.RemoteException;
 import com.six.dove.remote.exception.RemoteInvokeException;
-import com.six.dove.remote.exception.RemoteUnfoundServiceException;
+import com.six.dove.remote.exception.RemoteNotFoundServiceException;
 import com.six.dove.remote.exception.RemoteRejectException;
 import com.six.dove.remote.exception.RemoteTimeoutException;
 import com.six.dove.remote.protocol.RemoteRequest;
 import com.six.dove.remote.protocol.RemoteResponse;
 import com.six.dove.remote.protocol.RemoteResponseConstants;
 import com.six.dove.remote.protocol.RemoteResponseState;
-import com.six.dove.remote.protocol.RemoteSerialize;
+import com.six.dove.remote.serialize.RemoteSerialize;
 import com.six.dove.util.ClassUtils;
 import com.six.dove.util.RemoteUtils;
 
@@ -146,7 +146,7 @@ public abstract class AbstractClientRemote
 				throw new RemoteTimeoutException(
 						"execute rpcRequest[" + rpcRequest.toString() + "] timeout[" + getCallTimeout() + "]");
 			} else if (rpcResponse.getStatus() == RemoteResponseState.UNFOUND_SERVICE) {
-				throw new RemoteUnfoundServiceException(rpcResponse.getMsg());
+				throw new RemoteNotFoundServiceException(rpcResponse.getMsg());
 			} else if (rpcResponse.getStatus() == RemoteResponseState.REJECT) {
 				throw new RemoteRejectException(rpcResponse.getMsg());
 			} else if (rpcResponse.getStatus() == RemoteResponseState.INVOKE_ERR) {

@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.six.dove.remote.protocol.RemoteMsg;
 import com.six.dove.remote.protocol.RemoteProtocol;
-import com.six.dove.remote.protocol.RemoteSerialize;
+import com.six.dove.remote.serialize.RemoteSerialize;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

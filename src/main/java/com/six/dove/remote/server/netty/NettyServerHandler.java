@@ -5,8 +5,8 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.six.dove.remote.exception.RemoteSystenException;
-import com.six.dove.remote.exception.RemoteSystenExceptions;
+import com.six.dove.remote.exception.RemoteSystemException;
+import com.six.dove.remote.exception.RemoteSystemExceptions;
 import com.six.dove.remote.protocol.RemoteRequest;
 import com.six.dove.remote.protocol.RemoteResponse;
 import com.six.dove.remote.server.AbstractServerRemote;
@@ -56,19 +56,19 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<RemoteReques
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 		Channel ch = ctx.channel();
 		String address = ctx.channel().remoteAddress().toString();
-		if (cause instanceof RemoteSystenException) {
-			RemoteSystenException signalErr = (RemoteSystenException) cause;
-			if (signalErr.getRpcSystenType() == RemoteSystenExceptions.MSG_ILLEGAL_TYPE) {
+		if (cause instanceof RemoteSystemException) {
+			RemoteSystemException signalErr = (RemoteSystemException) cause;
+			if (signalErr.getRpcSystenType() == RemoteSystemExceptions.MSG_ILLEGAL_TYPE) {
 				RemoteResponse response = new RemoteResponse();
 				response.setMsg("the msg is illegal");
 				ctx.writeAndFlush(response);
 				log.warn("the msg is illegal from channel[" + address + "]");
-			} else if (signalErr.getRpcSystenType() == RemoteSystenExceptions.MSG_TOO_BIG) {
+			} else if (signalErr.getRpcSystenType() == RemoteSystemExceptions.MSG_TOO_BIG) {
 				RemoteResponse response = new RemoteResponse();
 				response.setMsg("the msg is too big");
 				ctx.writeAndFlush(response);
 				log.warn("the msg is too big from channel[" + address + "]");
-			} else if (signalErr.getRpcSystenType() == RemoteSystenExceptions.READER_IDLE) {
+			} else if (signalErr.getRpcSystenType() == RemoteSystemExceptions.READER_IDLE) {
 				log.warn("the channel[" + address + "] is reader idle and will be close");
 			}
 		} else if (cause instanceof IOException) {

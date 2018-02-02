@@ -17,7 +17,7 @@ import com.six.dove.remote.compiler.support.JavaCompilerImpl;
 import com.six.dove.remote.protocol.RemoteRequest;
 import com.six.dove.remote.protocol.RemoteResponse;
 import com.six.dove.remote.protocol.RemoteResponseState;
-import com.six.dove.remote.protocol.RemoteSerialize;
+import com.six.dove.remote.serialize.RemoteSerialize;
 import com.six.dove.util.ClassUtils;
 import com.six.dove.util.ExceptionUtils;
 
