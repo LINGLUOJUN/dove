@@ -53,7 +53,7 @@ public interface Remote<R_S, R_R, C_S extends RemoteMsg, C_R, C extends RemoteCo
     /**
      * 添加 接入到的连接
      *
-     * @param id host:port。例如: 127.0.0.1:8080
+     * @param connection host:port。例如: 127.0.0.1:8080
      * @return
      */
     void addConnection(C connection);

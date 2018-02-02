@@ -29,7 +29,7 @@ public class ServiceName implements Serializable {
 	/**
 	 * 服务方法参数类型
 	 */
-	private String[] parmaTypes;
+	private String[] paramTypes;
 
 	/**
 	 * 服务版本
@@ -52,12 +52,12 @@ public class ServiceName implements Serializable {
 		this.methodName = methodName;
 	}
 
-	public String[] getParmaTypes() {
-		return parmaTypes;
+	public String[] getParamTypes() {
+		return paramTypes;
 	}
 
-	public void setParmaTypes(String[] parmaTypes) {
-		this.parmaTypes = parmaTypes;
+	public void setParamTypes(String[] paramTypes) {
+		this.paramTypes = paramTypes;
 	}
 
 	public int getVersion() {
@@ -87,8 +87,8 @@ public class ServiceName implements Serializable {
 		StringBuilder sb = new StringBuilder();
 		sb.append(className).append("_");
 		sb.append(methodName).append("_");
-		if (null != parmaTypes) {
-			for (String parmaType : parmaTypes) {
+		if (null != paramTypes) {
+			for (String parmaType : paramTypes) {
 				sb.append(parmaType).append("_");
 			}
 		}
@@ -100,7 +100,7 @@ public class ServiceName implements Serializable {
 		ServiceName serviceName = new ServiceName();
 		serviceName.setClassName(className);
 		serviceName.setMethodName(methodName);
-		serviceName.setParmaTypes(parmaTypes);
+		serviceName.setParamTypes(parmaTypes);
 		serviceName.setVersion(version);
 		return serviceName;
 	}

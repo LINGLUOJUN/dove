@@ -6,17 +6,16 @@ import com.six.dove.remote.protocol.RemoteResponse;
  * @author 作者
  * @E-mail: 359852326@qq.com
  * @date 创建时间：2017年4月7日 上午9:10:35
- * 
- *       rpc 服务异步调用 回调接口
+ * <p>
+ * rpc 服务异步调用 回调接口
  */
 @FunctionalInterface
 public interface AsyCallback {
 
-	/**
-	 * rpc 服务异步调用 回调方法
-	 * 
-	 * @param result
-	 *            rpc调用返回结果
-	 */
-	 void execute(RemoteResponse response);
+    /**
+     * rpc 服务异步调用 回调方法
+     *
+     * @param response rpc调用返回结果
+     */
+    void execute(RemoteResponse response);
 }
