@@ -1,6 +1,10 @@
 package com.ys.common;
 
 
+import com.ys.rpc.Invoker;
+
+import java.util.Map;
+
 /**
  * 服务调用单元
  * @author yangshuang
@@ -11,35 +15,59 @@ public interface Invocation {
 
 
     /**
-     * 获取服务名称
+     * get method name.
      *
-     * @return
+     * @serial
+     * @return method name.
      */
-    String getName();
+    String getMethodName();
 
     /**
-     * 获取服务状态
+     * get parameter types.
      *
-     * @return
+     * @serial
+     * @return parameter types.
      */
-    State getState();
-
+    Class<?>[] getParameterTypes();
 
     /**
-     * 服务是否正在运行
+     * get arguments.
      *
-     * @return
+     * @serial
+     * @return arguments.
      */
-    boolean isRunning();
+    Object[] getArguments();
 
     /**
-     * 启动服务
+     * get attachments.
+     *
+     * @serial
+     * @return attachments.
      */
-    void start();
+    Map<String, String> getAttachments();
 
     /**
-     * 停止服务
+     * get attachment by key.
+     *
+     * @serial
+     * @return attachment value.
      */
-    void stop();
+    String getAttachment(String key);
+
+    /**
+     * get attachment by key with default value.
+     *
+     * @serial
+     * @return attachment value.
+     */
+    String getAttachment(String key, String defaultValue);
+
+    /**
+     * get the invoker in current context.
+     *
+     * @transient
+     * @return invoker.
+     */
+    Invoker<?> getInvoker();
 
 }

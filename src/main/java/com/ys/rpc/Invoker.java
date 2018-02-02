@@ -10,7 +10,7 @@ import com.ys.common.Result;
  * @version v1.0
  * @date 2018/2/2 11:45
  */
-public interface Invoker<T> {
+public interface Invoker<T> extends Node {
 
     /**
      * get service interface.
