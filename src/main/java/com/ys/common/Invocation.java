@@ -1,22 +1,19 @@
-package com.six.dove.common;
+package com.ys.common;
+
 
 /**
- * @author sixliu
- * @date 2018年1月17日
- * @email 359852326@qq.com
- * @Description 服务调用接口
+ * 服务调用单元
+ * @author yangshuang
+ * @version 1.0
  */
-public interface Service {
+public interface Invocation {
 
     /**
      * 服务状态
      *
      * @author Administrator
      */
-    enum State {
 
-        INIT, START, STOP, FAILED;
-    }
 
     /**
      * 获取服务名称
