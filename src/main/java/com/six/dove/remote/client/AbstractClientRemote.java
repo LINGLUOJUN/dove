@@ -86,7 +86,7 @@ public abstract class AbstractClientRemote
 		String fullProxyClassName = packageName + "." + proxyClassName;
 		// ServiceName serviceName=ServiceName.newServiceName(clz.getCanonicalName(),
 		// methodName, parmaTypes, version)
-		return (T) getCompiler().findOrCompile(fullProxyClassName,
+		return (T) getCompiler().compile(fullProxyClassName,
 				new Class<?>[] { ClientRemote.class, String.class, int.class, AsyCallback.class },
 				new Object[] { this, callHost, callPort, asyCallback }, () -> {
 					return generateProtocolProxyClassCode(clz, packageName, proxyClassName);

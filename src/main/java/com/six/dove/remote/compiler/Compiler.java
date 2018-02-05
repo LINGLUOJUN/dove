@@ -18,5 +18,5 @@ public interface Compiler {
      * @param fullClassName
      * @return
      */
-    Object findOrCompile(String fullClassName, Class<?>[] parameterTypes, Object[] initArgs, CodeBuilder codeBuilder);
+    Object compile(String fullClassName, Class<?>[] parameterTypes, Object[] initArgs, CodeBuilder codeBuilder);
 }

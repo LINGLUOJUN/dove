@@ -35,7 +35,7 @@ public class DoveClientTest {
 			try {
 				long startTime = System.currentTimeMillis();
 				result = testServiceSyn.say(name);
-				System.out.println(result);
+				System.out.println("返回结果==>>"+result);
 				long endTime = System.currentTimeMillis();
 				long totalTime = endTime - startTime;
 				allTimeSyn.set(allTimeSyn.get() + totalTime);
