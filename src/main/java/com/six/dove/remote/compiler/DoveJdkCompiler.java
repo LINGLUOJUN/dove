@@ -22,16 +22,18 @@ import java.util.Arrays;
  * @email 359852326@qq.com
  * @Description
  */
-public class DoveJavaCompiler extends AbstractCompiler {
+public class DoveJdkCompiler extends AbstractCompiler {
 
 	private final JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+
 	private final DiagnosticCollector<JavaFileObject> diagnosticCollector = new DiagnosticCollector<>();
+
 	private final DoveJavaFileManager javaFileManager;
 
-	//classLoader
+
 	private ProxyClassLoader proxyClassLoader;
 
-	public DoveJavaCompiler() {
+	public DoveJdkCompiler() {
 		StandardJavaFileManager manager = compiler.getStandardFileManager(diagnosticCollector, null, null);
 		final ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		proxyClassLoader = AccessController.doPrivileged((PrivilegedAction<ProxyClassLoader>) () -> new ProxyClassLoader(loader));
@@ -45,9 +47,12 @@ public class DoveJavaCompiler extends AbstractCompiler {
 
 	@Override
 	protected Class<?> doCompile(String fullClassName, String code, ClassLoader classLoader) throws Exception {
+
 		String packageName =fullClassName.substring(0,fullClassName.lastIndexOf("."));
 		String className = fullClassName.substring(fullClassName.lastIndexOf(".")+1);
+
 		JavaFileObject javaFileObject = new StringJavaObject(className, code);
+
 		javaFileManager.putFileForInput(StandardLocation.SOURCE_PATH, packageName,
 				className + ClassUtils.JAVA_EXTENSION, javaFileObject);
 		DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();

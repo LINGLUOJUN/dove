@@ -16,15 +16,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
- * <p>@description:</p>
+ * <p>@description:文件管理</p>
  *
  * @author yangshuang
  * @version v1.0
  * @date 2018/2/5 16:46
  */
 public final class DoveJavaFileManager extends ForwardingJavaFileManager<JavaFileManager> {
+
 
     private final ProxyClassLoader classLoader;
 
@@ -38,18 +40,26 @@ public final class DoveJavaFileManager extends ForwardingJavaFileManager<JavaFil
     @Override
     public FileObject getFileForInput(Location location, String packageName, String relativeName)
             throws IOException {
-        FileObject o = fileObjects.get(uri(location, packageName, relativeName));
-        if (o != null)
+        FileObject o = fileObjects.get(genUri(location, packageName, relativeName));
+        if (o != null) {
             return o;
+        }
         return super.getFileForInput(location, packageName, relativeName);
     }
 
     public void putFileForInput(StandardLocation location, String packageName, String relativeName,
                                 JavaFileObject file) {
-        fileObjects.put(uri(location, packageName, relativeName), file);
+        fileObjects.put(genUri(location, packageName, relativeName), file);
     }
 
-    private URI uri(Location location, String packageName, String relativeName) {
+    /**
+     * 生成uri地址
+     * @param location
+     * @param packageName
+     * @param relativeName
+     * @return
+     */
+    private URI genUri(Location location, String packageName, String relativeName) {
         return ClassUtils.toURI(location.getName() + '/' + packageName + '/' + relativeName);
     }
 
@@ -79,21 +89,16 @@ public final class DoveJavaFileManager extends ForwardingJavaFileManager<JavaFil
         Iterable<JavaFileObject> result = super.list(location, packageName, kinds, recurse);
 
         ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
-        List<URL> urlList = new ArrayList<URL>();
+        List<URL> urlList = new ArrayList<>();
         Enumeration<URL> e = contextClassLoader.getResources("com");
         while (e.hasMoreElements()) {
             urlList.add(e.nextElement());
         }
 
-        ArrayList<JavaFileObject> files = new ArrayList<JavaFileObject>();
+        List<JavaFileObject> files = new ArrayList<>();
 
         if (location == StandardLocation.CLASS_PATH && kinds.contains(JavaFileObject.Kind.CLASS)) {
-            for (JavaFileObject file : fileObjects.values()) {
-                if (file.getKind() == JavaFileObject.Kind.CLASS && file.getName().startsWith(packageName)) {
-                    files.add(file);
-                }
-            }
-
+            files = fileObjects.values().stream().filter(file -> file.getKind() == JavaFileObject.Kind.CLASS && file.getName().startsWith(packageName)).collect(Collectors.toList());
             files.addAll(classLoader.files());
         } else if (location == StandardLocation.SOURCE_PATH && kinds.contains(JavaFileObject.Kind.SOURCE)) {
             for (JavaFileObject file : fileObjects.values()) {

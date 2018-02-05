@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.six.dove.remote.compiler.Compiler;
-import com.six.dove.remote.compiler.DoveJavaCompiler;
+import com.six.dove.remote.compiler.DoveJdkCompiler;
 import com.six.dove.remote.serialize.RemoteSerialize;
 import com.six.dove.remote.server.AbstractServerRemote;
 import com.six.dove.rpc.protocol.netty.NettyRpcDecoder;
@@ -70,7 +70,7 @@ public class NettyServerRemote extends AbstractServerRemote {
 
 	public NettyServerRemote(String loaclHost, int trafficPort, int workerIoThreads, int workerCodeThreads,
 			int workerBizThreads) {
-		this(new DoveJavaCompiler(), new RemoteSerialize() {
+		this(new DoveJdkCompiler(), new RemoteSerialize() {
 		}, loaclHost, trafficPort, workerIoThreads, workerCodeThreads, workerBizThreads);
 	}
 

@@ -13,7 +13,7 @@ import com.six.dove.remote.AbstractRemote;
 import com.six.dove.remote.ServiceName;
 import com.six.dove.remote.ServicePath;
 import com.six.dove.remote.compiler.Compiler;
-import com.six.dove.remote.compiler.DoveJavaCompiler;
+import com.six.dove.remote.compiler.DoveJdkCompiler;
 import com.six.dove.remote.protocol.RemoteRequest;
 import com.six.dove.remote.protocol.RemoteResponse;
 import com.six.dove.remote.protocol.RemoteResponseState;
@@ -42,7 +42,7 @@ public abstract class AbstractServerRemote extends
 
 
 	public AbstractServerRemote(String name, String localHost, int listenPort) {
-		this(name, localHost, listenPort, new DoveJavaCompiler(), new RemoteSerialize() {
+		this(name, localHost, listenPort, new DoveJdkCompiler(), new RemoteSerialize() {
 		});
 	}
 

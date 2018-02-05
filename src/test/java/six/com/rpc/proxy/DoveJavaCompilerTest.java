@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import org.junit.Test;
 
 import com.six.dove.remote.compiler.Compiler;
-import com.six.dove.remote.compiler.DoveJavaCompiler;
+import com.six.dove.remote.compiler.DoveJdkCompiler;
 import com.six.dove.remote.server.AbstractServerRemote;
 import com.six.dove.remote.server.WrapperService;
 
@@ -23,7 +23,7 @@ public class DoveJavaCompilerTest {
 	@Test
 	public void test() {
 		String[] paras = new String[] { "sixliu" };
-		Compiler compiler = new DoveJavaCompiler();
+		Compiler compiler = new DoveJdkCompiler();
 		Class<?> protocolClass = TestService.class;
 		TestService testService = new TestServiceImpl();
 		TestServerRemote testServerRemote = new TestServerRemote("", "127.0.0.0", 8080);
